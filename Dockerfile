@@ -26,9 +26,6 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
     rm -rf /var/lib/apt/lists/*
 
 RUN npm install -g pnpm
-RUN curl -fsSL https://claude.ai/install.sh | bash
-# Claude Code
-RUN curl -fsSL https://claude.ai/install.sh | bash && \
-    cp -L /root/.local/bin/claude /usr/local/bin/claude && \
-    chmod +x /usr/local/bin/claude
+ENV PATH="/config/.local/bin:${PATH}"
+
 WORKDIR /projects
